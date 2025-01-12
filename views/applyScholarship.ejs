@@ -117,25 +117,5 @@
             <button class="submitScholarship" type="submit">Submit Scholarship</button>
         </form>
     </div>
-    <script>
-            const form = document.getElementById('registrationForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent form submission
-        
-        freezeForm();
-
-        alert('Form Submitted and Locked!');
-    });
-
-    function freezeForm() {
-        const inputs = form.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.disabled = true;  // Or use input.readOnly = true;
-        });
-        submitBtn.disabled = true;  // Disable submit button
-    }
-    </script>
 </body>
 </html>

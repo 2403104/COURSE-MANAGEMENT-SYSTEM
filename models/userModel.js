@@ -28,6 +28,8 @@ const userSchema = new Schema({
         required: [true, "Roll no is compulsory"],
         unique:true
     },
+    resetPasswordToken:String,
+    resetPasswordExpire:Date,
     profilePic:{
         type:String, 
         default:"user.png"

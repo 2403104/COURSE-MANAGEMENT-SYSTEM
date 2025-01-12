@@ -33,8 +33,8 @@
     <div class="container">
         <h1>Admin Login</h1>
         <div class="btn-container">
-            <button type="button" class="stud-admi">Student Login</button>
-            <button type="button" class="stud-admi">Administrator Login</button>
+            <a href="/studentLogin" class="studAdmiFacl">Student Login</a>
+            <a href="/facultyLogin" class="studAdmiFacl">Faculty Login</a>
         </div>
         <div class="error-container" id="error-message"></div>
         <div class="form-container">
@@ -54,7 +54,7 @@
                     <input type="password" id="confirmPassword  " class="input-container" name="confirmPassword"
                         placeholder="Confirm Password" required />
                 </div>
-                <p><a href="/passwordChange" class="a1">forgot password?</a></p>
+                
                 <button type="submit" class="submit-btn">Login</button>
             </form>
             <p class="p1"><a href="/studentLogin" class="a2"><strong>Student Login</strong></a></p>

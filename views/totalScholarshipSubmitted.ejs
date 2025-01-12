@@ -146,7 +146,6 @@
     <script>
         async function handleApproval(loginId, status) {
             const remarks = document.getElementById(`remarks-${loginId}`).value;
-            // const status = document.getElementById(`status-${loginId}`).value;
     
             try {
                 const response = await fetch('/update-scholarship-status', {

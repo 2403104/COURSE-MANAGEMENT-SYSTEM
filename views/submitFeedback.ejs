@@ -164,10 +164,8 @@
                         <option value="No Opinion">No Opinion</option>
                     </select>
                 </div>
-                <!-- Add more questions for the learning section -->
             </div>
 
-            <!-- General Questions -->
             <div class="form-section">
                 <div class="form-content">
                     <label>How would you rate the workload of this course?</label>
@@ -179,10 +177,8 @@
                         <option value="No Opinion">No Opinion</option>
                     </select>
                 </div>
-                <!-- Add more general questions -->
             </div>
 
-            <!-- Subjective Questions -->
             <div class="form-section">
                 <div class="form-content">
                     <label>What did you like the most about this course?</label>
@@ -200,10 +196,8 @@
                     <label>What did you dislike the most about this course?</label>
                     <textarea name="dislikeMosttutorial"></textarea>
                 </div>
-                <!-- Add more subjective questions -->
             </div>
 
-            <!-- Submit Button -->
             <button type="submit" style="height: 50px;" class="submit-btn">Submit Feedback</button>
         </form>
     </div>
@@ -211,7 +205,6 @@
         const courseList = <%-courseList%>;
         const facultyList = <%-facultylist%>; 
         
-        // Populate the Course dropdown
         const courseDropdown = document.getElementById('course');
         courseList.forEach(course => {
             let option = document.createElement('option');
@@ -220,7 +213,6 @@
             courseDropdown.appendChild(option);
         });
 
-        // Populate the Faculty dropdown
         const facultyDropdown = document.getElementById('faculty');
         facultyList.forEach(faculty => {
             let option = document.createElement('option');

@@ -20,11 +20,15 @@ h1 {
     justify-content: space-evenly;
 }
 
-.stud-admi{
+.studAdmiFacl{
     width: 260px;
     height: 35px;
     font-size: 21px;
     background-color: rgb(99, 99, 246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
     border: none;
     border-radius: 8px;
 }
