@@ -41,8 +41,9 @@ app.use(session({
 
 app.set('view engine', 'ejs');
 
+app.set('views', path.join(__dirname, 'views'));
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/uploads')
@@ -69,6 +70,9 @@ const upload1 = multer({ storage: storage1 });
 
 app.use(express.static('public'));
 
+app.get('/',(req,res)=>{
+    return res.redirect('/studentLogin')
+})
 //STUDENT
 
 app.get('/studentLogin', (req, res) => {
@@ -79,7 +83,7 @@ app.post('/studentLogin', async (req, res) => {
         const data = {
             loginId: req.body.loginIdStud,
             password: req.body.password,
-            confirmPassword: req.body.confirmPassword
+            confirmPassword: req.body.confirmPassword,
         }
         const user = await User.findOne({ loginId: data.loginId })
         if (!user) {
@@ -99,8 +103,9 @@ app.post('/studentLogin', async (req, res) => {
             _id: user._id,
             loginId: user.loginId,
             name: user.name,
-            semester: 1
+            semester:user.semester
         }
+        console.log(req.session.user)
         return res.status(200).json({ err: "" })
     } catch (error) {
         console.log(err)
@@ -175,6 +180,7 @@ app.post('/editDetails', upload.single('profilePic'), async (req, res) => {
             },
             studentDegreeDetails: {
                 branch: studentData.Branch,
+                
                 branchFromDate: studentData.branchFromDate,
                 studentType: studentData.studentType,
                 sponsoredOrganizationName: studentData.sponsoredOrgName || '',
@@ -189,7 +195,8 @@ app.post('/editDetails', upload.single('profilePic'), async (req, res) => {
                 degreeFromDate: studentData.degreeFromDate,
                 degreeToDate: studentData.degreeToDate || null,
                 remarks: studentData.remarks || ''
-            }
+            },
+            semester: studentData.Semester,
         }
 
         const user = await User.findOne({ loginId: req.session.user.loginId })
@@ -586,6 +593,7 @@ app.get('/addStudent', (req, res) => {
 })
 app.post('/addStudent', async (req, res) => {
     try {
+        // const courses=await Course.findOne({semester:req.body.semester})
         const data = {
             loginId: req.body.loginIdStud,
             name: req.body.name,
@@ -597,7 +605,10 @@ app.post('/addStudent', async (req, res) => {
                 studentName: req.body.name || '',
                 rollNo: req.body.rollNo || undefined,
             },
+            semester: req.body.semester,
+            // courses:courses.courses
         }
+        console.log(data)
         const hashPassword = await bcrypt.hash(data.password, 10);
         data.password = hashPassword;
         const addedData = await User.create(data);
@@ -1014,7 +1025,6 @@ app.get('/facultyViewTimetable',async(req,res)=>{
     return res.render('facultyLogin');
    }
 })
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log("Server started running...")
-})
+
+
+module.exports=app;

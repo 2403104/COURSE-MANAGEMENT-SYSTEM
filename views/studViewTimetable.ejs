@@ -92,19 +92,19 @@
     </div>
 
     <script>
-        function decodeHtml(html) {
-            var doc = new DOMParser().parseFromString(html, "text/html");
-            return doc.documentElement.textContent;
-        }
+        // function decodeHtml(html) {
+        //     var doc = new DOMParser().parseFromString(html, "text/html");
+        //     return doc.documentElement.textContent;
+        // }
 
-        const timetableDataEncoded = "<%= timetable %>";
-        const timetableData = decodeHtml(timetableDataEncoded);
+        const timetableDataEncoded = <%- timetable %>;
+        // const timetableData = decodeHtml(timetableDataEncoded);
 
-        const parsedTimetableData = JSON.parse(timetableData);
+        // const parsedTimetableData = JSON.parse(timetableData);
 
         const timetableBody = document.getElementById("timetable-body");
 
-        parsedTimetableData.forEach(dayData => {
+        timetableDataEncoded.forEach(dayData => {
             const dayRow = document.createElement("tr");
             dayRow.setAttribute("data-day", dayData.day);
 

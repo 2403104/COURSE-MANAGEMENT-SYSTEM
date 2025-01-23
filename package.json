@@ -2,9 +2,9 @@
   "name": "course-management-system",
   "version": "1.0.0",
   "description": "Create an user friendly course management system",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node server.js"
   },
   "author": "Ankit Kumar",
   "license": "ISC",

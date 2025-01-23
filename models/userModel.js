@@ -28,6 +28,10 @@ const userSchema = new Schema({
         required: [true, "Roll no is compulsory"],
         unique:true
     },
+    semester:{
+        type:Number,
+        required:[true,"Semester is Compulsory"]
+    },
     resetPasswordToken:String,
     resetPasswordExpire:Date,
     profilePic:{
