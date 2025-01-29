@@ -1011,7 +1011,7 @@ app.get('/studViewTimetable',async(req,res)=>{
  try{
     const timeTable=await Timetable.findOne({semester:1});
 
-    return res.render("StudViewTimetable",{name:req.session.user.name,timetable:JSON.stringify(timeTable.timeTable)})
+    return res.render("studViewTimetable",{name:req.session.user.name,timetable:JSON.stringify(timeTable.timeTable)})
  }catch(err){
     return res.render("studentLogin");
  }
